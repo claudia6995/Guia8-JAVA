@@ -1,0 +1,23 @@
+PersonaServicio ps = new PersonaServicio();
+        
+        Persona p1 = ps.crearPersona();
+        Persona p2 = ps.crearPersona();
+        Persona p3 = ps.crearPersona();
+        Persona p4 = ps.crearPersona();
+        
+        
+        int[] resultadosIMC = new int[4];
+        boolean[] resultadosEdad = new boolean[4];
+        
+        resultadosIMC[0] = ps.calcularIMC(p1,p1);
+        resultadosIMC[1] = ps.calcularIMC(p2,p2);
+        resultadosIMC[2] = ps.calcularIMC(p3,p3);
+        resultadosIMC[3] = ps.calcularIMC(p4,p4);
+        
+    resultadosEdad[0] = ps.esMayorDeEdad(p1);
+    resultadosEdad[1] = ps.esMayorDeEdad(p2);
+    resultadosEdad[2] = ps.esMayorDeEdad(p3);
+    resultadosEdad[3] = ps.esMayorDeEdad(p4);
+        
+    ps.calcularPorcentajeIMC(resultadosIMC);
+    ps.calcularPorcentajeEdad(resultadosEdad);
