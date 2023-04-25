@@ -44,9 +44,6 @@ public class PersonaServicio {
         System.out.println("Ingrese su altura en metros");
         double altura = leer.nextDouble();
 
-        
-      
-        
         return new Persona(nombre, edad, sexo, peso, altura);
 
     }
@@ -72,8 +69,8 @@ public class PersonaServicio {
 
         double IMC = aux.getPeso() / (aux.getAltura() * aux.getAltura());
 
-        System.out.println("- La persona mide " + aux.getAltura()+" metros");
-        System.out.println("- La persona pesa " + aux.getPeso()+ " kg.");
+        System.out.println("- La persona mide " + aux.getAltura() + " metros");
+        System.out.println("- La persona pesa " + aux.getPeso() + " kg.");
         System.out.println("- El índice de  masa corporal (IMC) es:   " + IMC);
 
         if (IMC <= 20) {
@@ -87,51 +84,49 @@ public class PersonaServicio {
             return 1;
         }
         return 0;
-        }
-    public void calcularPorcentajeIMC(int[] vIMCs) {
-      
-     
-       int contBajoPeso=0;
-        int contPesoIdeal=0;
-        int contSobrepeso=0;
-                     
-        for (int i = 0; i < 4; i++) {
-            
-             vIMCs[i] = aux.getPeso() / (aux.getAltura() * aux.getAltura());
-            if (vIMCs[i] <20 ){
-              vIMCs[i] = contBajoPeso ++;
-        }else if (vIMCs[i] >=20 && <=25);{
-         vIMCs[i] =  contPesoIdeal++;   
-            }else{
-                 vIMCs[i] =    contSobrepeso++;
-        }
-        }
-        double bPeso = contBajoPeso * 4/100;
-        double pIdeal = contPesoIdeal*4/100;
-        double sobrePeso =contSobrepeso/4/100;
-        System.out.println("\n"+ bPeso +" % de personas debajo del peso ideal" );
-        System.out.println(+ pIdeal +" % de personas con peso ideal" );
-        System.out.println(+ sobrePeso +" % de personas con obrepeso" );
+    }
 
-            
+    public void calcularPorcentajeIMC(int[] vIMCs) {
+        
+        int contBajoPeso = 0;
+        int contPesoIdeal = 0;
+        int contSobrepeso = 0;
+        int IMCs = 0;
+        for (int i = 0; i < 4; i++) {
+
+            if (IMCs == -1) {
+                vIMCs[i] = contBajoPeso++;
+            } else if (IMCs == 0) {
+                vIMCs[i] = contPesoIdeal++;
+            } else {
+                vIMCs[i] = contSobrepeso++;
+            }
         }
-    public void calcularPorcentajeEdad(boolean[]vEdad) {
-        int mayorEdad =0;
-        int menorEdad =0;
+        double bPeso = contBajoPeso * 100 / 4;
+        double pIdeal = contPesoIdeal * 100 / 4;
+        double sobrePeso = contSobrepeso * 1004 / 4;
+        System.out.println("\n Hay " + bPeso + " % de  personas  por debajo del peso ideal");
+        System.out.println(" Hay "+pIdeal + " % de personas con peso ideal");
+        System.out.println(" Hay "+sobrePeso + " % de personas con sobrepeso");
+
+    }
+
+    public void calcularPorcentajeEdad(boolean[] vEdad) {
+        int mayorEdad = 0;
+        int menorEdad = 0;
         for (int i = 0; i < 4; i++) {
             if (vEdad[i]) {
-                mayorEdad ++;}
-            else{
-                 menorEdad ++;}
-                
+                mayorEdad++;
+                                 break;
+            } else {
+               menorEdad++;
             }
-            
-        }
-        double mayores = ((double)mayorEdad)* 4/100;
-        // double menores = ((double)menorEdad)*4/100;
+                
+                  }
+        double mayores = ((double) mayorEdad) * 100 / 4;
+        double menores = ((double) menorEdad)*100/4;
+        System.out.println("\n Hay " + mayorEdad + " % mayores de edad" );
+        System.out.println(" Hay " + menorEdad + " % menores de edad");
     }
-    
-    
-    
-
-  
+      
+}
